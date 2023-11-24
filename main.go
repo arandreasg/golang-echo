@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"pegadaianempat/config"
 	"pegadaianempat/controller"
 	auth "pegadaianempat/middleware"
@@ -68,5 +69,7 @@ func main() {
 	e.POST("/login", controller.UserLogin)
 	e.POST("/register", controller.CreateEmployee)
 
-	e.Logger.Fatal(e.Start(":1323"))
+	var PORT = os.Getenv("PORT")
+
+	e.Logger.Fatal(e.Start(":" + PORT))
 }
